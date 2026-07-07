@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>MangaVerse</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark">
+
+    <div class="container d-flex justify-content-between">
+
+        <a class="navbar-brand fw-bold" href="{% url 'lista_mangas' %}">
+
+            📚 MangaVerse
+
+        </a>
+        <a href="{% url 'ver_carrito' %}"
+            class="btn btn-warning">
+            🛒 Carrito
+    
+
+        <a href="{% url 'agregar_manga' %}"
+           class="btn btn-success">
+
+            ➕ Nuevo Manga
+
+        </a>
+
+    </div>
+
+</nav>
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">
+
+        Catálogo de Mangas
+
+    </h2>
+
+    <div class="row">
+
+        {% for manga in mangas %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow h-100">
+
+                {% if manga.imagen %}
+
+                    <img src="{{ manga.imagen.url }}"
+                         class="card-img-top"
+                         style="height:350px;object-fit:cover;">
+
+                {% else %}
+
+                    <img
+                    src="https://placehold.co/400x600?text=Manga"
+                    class="card-img-top">
+
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h4>
+
+                        {{ manga.nombre }}
+
+                    </h4>
+
+                    <p>
+
+                        <strong>Categoría:</strong>
+
+                        {{ manga.categoria }}
+
+                    </p>
+
+                    <p>
+
+                        {{ manga.descripcion|truncatewords:18 }}
+
+                    </p>
+
+                    <h5 class="text-success">
+
+                        ${{ manga.precio }}
+
+                    </h5>
+
+                    {% if manga.stock > 0 %}
+
+                        <span class="badge bg-success">
+
+                            Stock: {{ manga.stock }}
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge bg-danger">
+
+                            Sin stock
+
+                        </span>
+
+                    {% endif %}
+
+                    <br><br>
+
+                    {% if manga.disponible %}
+
+                        <span class="badge bg-primary">
+
+                            Disponible
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge bg-secondary">
+
+                            No disponible
+
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="card-footer text-center">
+
+                    <a
+                    href="{% url 'editar_manga' manga.id %}"
+                    class="btn btn-warning">
+
+                        ✏️ Editar
+
+                    </a>
+
+                    <a
+                    href="{% url 'eliminar_manga' manga.id %}"
+                    class="btn btn-danger">
+
+                        🗑️ Eliminar
+
+                    </a>
+                    <a
+                    href="{% url 'agregar_carrito' manga.id %}"
+                    class="btn btn-success">
+
+                        🛒 Agregar al Carrito  
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+            <h4>
+
+                No existen mangas registrados.
+
+            </h4>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

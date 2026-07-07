@@ -1,0 +1,303 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Inicio | MangaVerse{% endblock %}
+
+{% block contenido %}
+
+<!-- ========================================= -->
+<!-- HERO -->
+<!-- ========================================= -->
+
+<!-- ========================================= -->
+<section class="mb-5">
+
+    <img
+        src="{% static 'img/banner-home.png' %}"
+        class="w-100"
+        alt="Banner MangaVerse">
+
+</section>
+<!-- ========================================= -->
+<!-- BIENVENIDA -->
+<!-- ========================================= -->
+
+<section class="text-center mb-5">
+
+    <h1 class="display-4 fw-bold">
+
+        Bienvenido a MangaVerse
+
+    </h1>
+
+    <p class="lead text-muted">
+
+        Descubre miles de mangas, ediciones especiales y las últimas novedades del mundo del anime.
+
+    </p>
+
+    <a
+        href="{% url 'catalogo' %}"
+        class="btn btn-warning btn-lg">
+
+        📚 Explorar Catálogo
+
+    </a>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DESTACADOS -->
+<!-- ========================================= -->
+
+<section class="mb-5">
+
+    <h2 class="fw-bold mb-4">
+
+        🔥 Mangas Destacados
+
+    </h2>
+
+    <div class="row g-4">
+
+        {% for manga in destacados %}
+
+            <div class="col-lg-3 col-md-6">
+
+                {% include "componentes/card_producto.html" %}
+
+            </div>
+
+        {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning">
+
+                    No existen mangas destacados.
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- NOVEDADES -->
+<!-- ========================================= -->
+
+<section class="mb-5">
+
+    <h2 class="fw-bold mb-4">
+
+        🆕 Últimos Lanzamientos
+
+    </h2>
+
+    <div class="row g-4">
+
+        {% for manga in nuevos %}
+
+            <div class="col-lg-3 col-md-6">
+
+                {% include "componentes/card_producto.html" %}
+
+            </div>
+
+        {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-info">
+
+                    No existen lanzamientos.
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CATEGORÍAS -->
+<!-- ========================================= -->
+
+<section class="my-5">
+
+    <h2 class="fw-bold mb-4">
+
+        📚 Explora por Categoría
+
+    </h2>
+
+    <div class="row text-center">
+
+        <div class="col">
+
+            <div class="btn btn-outline-dark btn-lg w-100">
+
+                Shōnen
+
+            </div>
+
+        </div>
+
+        <div class="col">
+
+            <div class="btn btn-outline-dark btn-lg w-100">
+
+                Seinen
+
+            </div>
+
+        </div>
+
+        <div class="col">
+
+            <div class="btn btn-outline-dark btn-lg w-100">
+
+                Shōjo
+
+            </div>
+
+        </div>
+
+        <div class="col">
+
+            <div class="btn btn-outline-dark btn-lg w-100">
+
+                Isekai
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- BENEFICIOS -->
+<!-- ========================================= -->
+
+<section class="mt-5">
+
+    <div class="row text-center">
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+
+                    <h1>🚚</h1>
+
+                    <h5>
+
+                        Envíos rápidos
+
+                    </h5>
+
+                    <p>
+
+                        Despachamos a todo Chile.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+
+                    <h1>💳</h1>
+
+                    <h5>
+
+                        Pago Seguro
+
+                    </h5>
+
+                    <p>
+
+                        Compra con total tranquilidad.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+
+                    <h1>📚</h1>
+
+                    <h5>
+
+                        Miles de títulos
+
+                    </h5>
+
+                    <p>
+
+                        Shonen, Seinen, Shojo, Isekai y mucho más.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+
+                    <h1>⭐</h1>
+
+                    <h5>
+
+                        Calidad garantizada
+
+                    </h5>
+
+                    <p>
+
+                        Productos originales y coleccionables.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

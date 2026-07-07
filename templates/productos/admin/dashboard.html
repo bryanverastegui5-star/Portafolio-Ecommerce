@@ -1,0 +1,195 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+
+Panel Administrativo
+
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container py-5">
+
+<div class="d-flex justify-content-between align-items-center mb-5">
+
+<div>
+
+<h1 class="fw-bold">
+
+📊 Panel Administrativo
+
+</h1>
+
+<p class="text-muted">
+
+Resumen general del ecommerce MangaVerse
+
+</p>
+
+</div>
+
+<a
+href="{% url 'home' %}"
+class="btn btn-outline-dark">
+
+🏠 Volver al sitio
+
+</a>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-lg-3">
+
+<div class="card shadow border-0 text-center h-100">
+
+<div class="card-body">
+
+<h1>📚</h1>
+
+<h2>{{ total_productos }}</h2>
+
+<p class="text-muted">
+
+Productos
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card shadow border-0 text-center h-100">
+
+<div class="card-body">
+
+<h1>👥</h1>
+
+<h2>{{ total_usuarios }}</h2>
+
+<p class="text-muted">
+
+Usuarios
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card shadow border-0 text-center h-100">
+
+<div class="card-body">
+
+<h1>📦</h1>
+
+<h2>{{ total_pedidos }}</h2>
+
+<p class="text-muted">
+
+Pedidos
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-3">
+
+<div class="card shadow border-0 text-center h-100">
+
+<div class="card-body">
+
+<h1>💰</h1>
+
+<h2>${{ total_ventas }}</h2>
+
+<p class="text-muted">
+
+Ventas
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<hr class="my-5">
+
+<h3 class="mb-4">
+
+⚡ Acciones rápidas
+
+</h3>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<a
+href="{% url 'lista_mangas' %}"
+class="btn btn-warning w-100 p-4">
+
+📚
+
+<br><br>
+
+Gestionar Productos
+
+</a>
+
+</div>
+
+<div class="col-md-4">
+
+<a
+href="/admin/pedidos/pedido/"
+class="btn btn-primary w-100 p-4">
+
+📦
+
+<br><br>
+
+Gestionar Pedidos
+
+</a>
+
+</div>
+
+<div class="col-md-4">
+
+<a
+href="/admin/"
+class="btn btn-dark w-100 p-4">
+
+⚙
+
+<br><br>
+
+Panel Django
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

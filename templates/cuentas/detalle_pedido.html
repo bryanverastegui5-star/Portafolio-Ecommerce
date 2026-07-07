@@ -1,0 +1,123 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+
+Detalle Pedido
+
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container py-5">
+
+<h2>
+
+Pedido #{{ pedido.id }}
+
+</h2>
+
+<hr>
+
+<p>
+
+<strong>Fecha:</strong>
+
+{{ pedido.fecha|date:"d/m/Y H:i" }}
+
+</p>
+
+<p>
+
+<strong>Estado:</strong>
+
+{{ pedido.estado }}
+
+</p>
+
+<p>
+
+<strong>Total:</strong>
+
+<span class="text-success">
+
+${{ pedido.total }}
+
+</span>
+
+</p>
+
+<hr>
+
+<h4>
+
+Productos
+
+</h4>
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>Producto</th>
+
+<th>Cantidad</th>
+
+<th>Precio</th>
+
+<th>Subtotal</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for detalle in pedido.detalles.all %}
+
+<tr>
+
+<td>
+
+{{ detalle.producto.nombre }}
+
+</td>
+
+<td>
+
+{{ detalle.cantidad }}
+
+</td>
+
+<td>
+
+${{ detalle.precio }}
+
+</td>
+
+<td>
+
+${{ detalle.subtotal }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<a
+href="{% url 'mis_pedidos' %}"
+class="btn btn-secondary">
+
+← Volver
+
+</a>
+
+</div>
+
+{% endblock %}

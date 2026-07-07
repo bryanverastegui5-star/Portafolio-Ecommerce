@@ -1,0 +1,135 @@
+/* ===========================
+   MangaVerse
+   Estilos Globales
+=========================== */
+
+body{
+    background-color:#f8f9fa;
+}
+
+.navbar-brand{
+    font-weight:bold;
+    font-size:1.5rem;
+}
+
+.card{  
+    transition:all .3s ease;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+footer{
+    margin-top:80px;
+}
+
+/* ===========================================
+   HERO MANGAVERSE
+=========================================== */
+
+/*=========================================
+    HERO BANNER
+=========================================*/
+
+..hero-banner{
+
+    margin:35px auto 60px;
+
+}
+
+.hero-img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    display:block;
+
+}
+/* ==========================================
+   TARJETAS DE PRODUCTOS
+========================================== */
+
+.producto-card{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:all .35s ease;
+
+}
+
+.producto-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.18);
+
+}
+
+.producto-imagen{
+
+    height:360px;
+
+    object-fit:cover;
+
+}
+
+.precio{
+
+    color:#ff7a00;
+
+    font-weight:700;
+
+}
+
+.favorito-btn{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    z-index:2;
+
+}
+
+.categoria-badge{
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:15px;
+
+    font-size:.8rem;
+
+}
+
+/* ==========================================
+   DASHBOARD
+========================================== */
+
+.card h1{
+
+    font-size:55px;
+
+}
+
+.card h2{
+
+    font-weight:700;
+
+    color:#ff7a00;
+
+}
+
+.card{
+
+    border-radius:18px;
+
+}

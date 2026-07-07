@@ -1,0 +1,214 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+
+Mi Carrito
+
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container py-5">
+
+    <h2 class="fw-bold mb-4">
+
+        🛒 Mi Carrito
+
+    </h2>
+
+    <p class="text-muted">
+
+        Productos agregados:
+        <strong>{{ total_productos }}</strong>
+
+    </p>
+
+    {% if carrito %}
+
+    <div class="table-responsive">
+
+        <table class="table align-middle table-hover shadow-sm">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Imagen</th>
+
+                    <th>Producto</th>
+
+                    <th>Precio</th>
+
+                    <th>Cantidad</th>
+
+                    <th>Stock</th>
+
+                    <th>Subtotal</th>
+
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for id, item in carrito.items %}
+
+                <tr>
+
+                    <td width="120">
+
+                        {% if item.imagen %}
+
+                        <img src="{{ item.imagen }}"
+                             class="img-fluid rounded shadow-sm"
+                             style="height:100px; object-fit:cover;">
+
+                        {% else %}
+
+                        Sin imagen
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <strong>
+
+                            {{ item.nombre }}
+
+                        </strong>
+
+                    </td>
+
+                    <td>
+
+                        ${{ item.precio|floatformat:0 }}
+
+                    </td>
+
+                    <td>
+
+                        <div class="d-flex align-items-center">
+
+                            <a href="{% url 'restar_producto' id %}"
+                               class="btn btn-warning btn-sm me-2">
+
+                                -
+
+                            </a>
+
+                            <strong>
+
+                                {{ item.cantidad }}
+
+                            </strong>
+
+                            <a href="{% url 'sumar_producto' id %}"
+                               class="btn btn-success btn-sm ms-2">
+
+                                +
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        {{ item.stock }}
+
+                    </td>
+
+                    <td class="fw-bold text-success">
+
+                        ${{ item.subtotal|floatformat:0 }}
+
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'eliminar_carrito' id %}"
+                           class="btn btn-danger btn-sm">
+
+                            🗑 Eliminar
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="row mt-4">
+
+        <div class="col-md-6">
+
+            <a href="{% url 'catalogo' %}"
+               class="btn btn-outline-primary">
+
+                ← Seguir comprando
+
+            </a>
+
+        </div>
+
+        <div class="col-md-6 text-end">
+
+            <h3>
+
+                Total:
+
+                <span class="text-success">
+
+                    ${{ total|floatformat:0 }}
+
+                </span>
+
+            </h3>
+
+            <a href="{% url 'finalizar_compra' %}"
+                class="btn btn-success btn-lg mt-2">
+
+                💳 Finalizar Compra
+
+            </a>
+
+        </div>
+
+    </div>
+
+    {% else %}
+
+    <div class="alert alert-warning text-center">
+
+        <h4>
+
+            Tu carrito está vacío.
+
+        </h4>
+
+        <a href="{% url 'catalogo' %}"
+           class="btn btn-warning mt-3">
+
+            Ir al catálogo
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

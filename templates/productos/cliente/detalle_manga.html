@@ -1,0 +1,74 @@
+{% extends "base/base.html" %}
+
+{% block contenido %}
+
+<div class="row">
+
+<div class="col-md-4">
+
+{% if manga.imagen %}
+
+<img src="{{ manga.imagen.url }}"
+     class="img-fluid rounded shadow">
+
+{% endif %}
+
+</div>
+
+<div class="col-md-8">
+
+<h1>
+
+{{ manga.nombre }}
+
+</h1>
+
+<h4 class="text-success">
+
+${{ manga.precio }}
+
+</h4>
+
+<p>
+
+<strong>Categoría:</strong>
+
+{{ manga.categoria }}
+
+</p>
+
+<p>
+
+{{ manga.descripcion }}
+
+</p>
+
+<p>
+
+<strong>Stock:</strong>
+
+{{ manga.stock }}
+
+</p>
+
+<a
+href="{% url 'agregar_carrito' manga.id %}"
+class="btn btn-success">
+
+🛒 Agregar al carrito
+
+</a>
+
+<a
+href="{% url 'catalogo' %}"
+class="btn btn-secondary">
+
+Volver
+
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

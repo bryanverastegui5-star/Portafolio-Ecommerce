@@ -1,0 +1,222 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Catálogo | MangaVerse
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container">
+
+    <!-- ============================= -->
+    <!-- TÍTULO -->
+    <!-- ============================= -->
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold">
+
+            📚 Catálogo MangaVerse
+
+        </h1>
+
+        <p class="text-muted">
+
+            Explora nuestra colección de mangas.
+
+        </p>
+
+    </div>
+
+    <!-- ============================= -->
+    <!-- BUSCADOR -->
+    <!-- ============================= -->
+
+    <form method="GET" class="row g-3 mb-4">
+
+        <div class="col-md-6">
+
+            <input
+                type="text"
+                class="form-control"
+                name="buscar"
+                placeholder="Buscar manga..."
+                value="{{ busqueda|default:'' }}">
+
+        </div>
+
+        <div class="col-md-4">
+
+            <select
+                class="form-select"
+                name="orden">
+
+                <option value=""
+                    {% if not orden %}selected{% endif %}>
+                    Más recientes
+                </option>
+
+                <option value="precio"
+                    {% if orden == "precio" %}selected{% endif %}>
+                    Precio ↑
+                </option>
+
+                <option value="-precio"
+                    {% if orden == "-precio" %}selected{% endif %}>
+                    Precio ↓
+                </option>
+
+                <option value="nombre"
+                    {% if orden == "nombre" %}selected{% endif %}>
+                    Nombre A-Z
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="col-md-2 d-grid">
+
+            <button
+                type="submit"
+                class="btn btn-warning">
+
+                Buscar
+
+            </button>
+
+        </div>
+
+    </form>
+
+    <!-- ============================= -->
+    <!-- CONTADOR -->
+    <!-- ============================= -->
+
+    <p class="text-muted mb-4">
+
+        Se encontraron
+
+        <strong>
+
+            {{ mangas.paginator.count }}
+
+        </strong>
+
+        mangas.
+
+    </p>
+
+    <!-- ============================= -->
+    <!-- PRODUCTOS -->
+    <!-- ============================= -->
+
+    <div class="row g-4">
+
+        {% for manga in mangas %}
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+
+                {% include "componentes/card_producto.html" %}
+
+            </div>
+
+        {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning text-center">
+
+                    No existen mangas disponibles.
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- ============================= -->
+    <!-- PAGINACIÓN -->
+    <!-- ============================= -->
+
+    {% if mangas.has_other_pages %}
+
+    <nav class="mt-5">
+
+        <ul class="pagination justify-content-center">
+
+            {% if mangas.has_previous %}
+
+            <li class="page-item">
+
+                <a
+                    class="page-link"
+                    href="?page={{ mangas.previous_page_number }}&buscar={{ busqueda }}&orden={{ orden }}">
+
+                    ← Anterior
+
+                </a>
+
+            </li>
+
+            {% endif %}
+
+            {% for pagina in mangas.paginator.page_range %}
+
+                {% if pagina == mangas.number %}
+
+                    <li class="page-item active">
+
+                        <span class="page-link">
+
+                            {{ pagina }}
+
+                        </span>
+
+                    </li>
+
+                {% else %}
+
+                    <li class="page-item">
+
+                        <a
+                            class="page-link"
+                            href="?page={{ pagina }}&buscar={{ busqueda }}&orden={{ orden }}">
+
+                            {{ pagina }}
+
+                        </a>
+
+                    </li>
+
+                {% endif %}
+
+            {% endfor %}
+
+            {% if mangas.has_next %}
+
+            <li class="page-item">
+
+                <a
+                    class="page-link"
+                    href="?page={{ mangas.next_page_number }}&buscar={{ busqueda }}&orden={{ orden }}">
+
+                    Siguiente →
+
+                </a>
+
+            </li>
+
+            {% endif %}
+
+        </ul>
+
+    </nav>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+
+Mi Perfil
+
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container py-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2 class="mb-4">
+
+                👤 Mi Perfil
+
+            </h2>
+
+            <hr>
+
+            <p>
+
+                <strong>Usuario:</strong>
+
+                {{ user.username }}
+
+            </p>
+
+            <p>
+
+                <strong>Correo:</strong>
+
+                {{ user.email }}
+
+            </p>
+
+            <p>
+
+                <strong>Fecha de registro:</strong>
+
+                {{ user.date_joined|date:"d/m/Y" }}
+
+            </p>
+
+            <div class="mt-4">
+
+                <a href="{% url 'mis_pedidos' %}"
+                   class="btn btn-warning">
+
+                    📦 Ver mis pedidos
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
