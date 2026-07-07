@@ -201,7 +201,7 @@ PORT = 5432
 ## 1 Clonar repositorio
 
 ```bash
-git clone https://github.com/usuario/MangaVerse.git
+git clone https://github.com/bryanverastegui5-star/Portafolio-Ecommerce
 ```
 
 ---
