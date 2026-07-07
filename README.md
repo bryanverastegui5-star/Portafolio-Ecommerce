@@ -1,5 +1,9 @@
 # 📚 MangaVerse
 
+**Repositorio del proyecto**
+
+https://github.com/bryanverastegui5-star/Portafolio-Ecommerce
+
 <p align="center">
 
 <img src="docs/logo.png" width="180">
